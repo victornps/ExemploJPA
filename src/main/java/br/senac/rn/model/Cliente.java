@@ -5,21 +5,32 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "tb_categoria")
-public class Categoria {
+@Entity(name = "tb_clientes")
+public class Cliente {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nome;
-    private String descricao;
+    private String cpf;
+    private Sexo sexo;
 
-    public Categoria() {
+    public Cliente() {
     }
 
-    public Categoria(int id, String nome, String descricao) {
+    public Cliente(int id, String nome, String cpf, Sexo sexo) {
         this.id = id;
         this.nome = nome;
-        this.descricao = descricao;
+        this.cpf = cpf;
+        this.sexo = sexo;
+    }
+
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
     }
 
     public int getId() {
@@ -38,17 +49,17 @@ public class Categoria {
         this.nome = nome;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 3;
         return hash;
     }
 
@@ -63,7 +74,7 @@ public class Categoria {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Categoria other = (Categoria) obj;
+        final Cliente other = (Cliente) obj;
         if (this.id != other.id) {
             return false;
         }
@@ -72,8 +83,9 @@ public class Categoria {
 
     @Override
     public String toString() {
-        return "Categoria{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + '}';
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", sexo=" + sexo + '}';
     }
+    
     
     
 }
