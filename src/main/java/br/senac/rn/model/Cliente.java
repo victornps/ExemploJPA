@@ -1,9 +1,13 @@
 package br.senac.rn.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+
 
 @Entity(name = "tb_clientes")
 public class Cliente {
@@ -12,7 +16,9 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nome;
+    @Column(unique = true)
     private String cpf;
+    @ManyToOne //classe interna to classe de fora
     private Sexo sexo;
 
     public Cliente() {

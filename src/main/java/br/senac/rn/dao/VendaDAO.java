@@ -1,7 +1,7 @@
 package br.senac.rn.dao;
 
 
-import br.senac.rn.model.Cliente;
+import br.senac.rn.model.Venda;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,41 +9,41 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 
-public class ClienteDAO {
-    
+public class VendaDAO {
+       
     private EntityManager manager;
        private EntityManagerFactory factory;
        
-       public ClienteDAO(){
+       public VendaDAO(){
         factory = Persistence.createEntityManagerFactory("ConexaoDB");
          manager = factory.createEntityManager();
        }
        
-    public void inserir(Cliente cliente){
+    public void inserir(Venda venda){
         manager.getTransaction().begin();
-        manager.persist(cliente);
+        manager.persist(venda);
         manager.getTransaction().commit();
-        System.out.println("Cliente Inserido: "+cliente);
+        System.out.println("Venda Inserida: "+venda);
     }
     
-    public void excluir(Cliente cliente){
+    public void excluir(Venda venda){
         manager.getTransaction().begin();
-        manager.remove(cliente);
-        manager.getTransaction().commit();
-    }
-    
-    public void atualizar(Cliente cliente){
-        manager.getTransaction().begin();
-        manager.merge(cliente);
+        manager.remove(venda);
         manager.getTransaction().commit();
     }
     
-    public List<Cliente> buscarTodos(){
-        TypedQuery<Cliente> consulta = manager.createQuery("SELECT c FROM Cliente c", Cliente.class);
+    public void atualizar(Venda venda){
+        manager.getTransaction().begin();
+        manager.merge(venda);
+        manager.getTransaction().commit();
+    }
+    
+    public List<Venda> buscarTodos(){
+        TypedQuery<Venda> consulta = manager.createQuery("SELECT v FROM Venda v", Venda.class);
         return consulta.getResultList();
     }
     
-    public Cliente buscarPorId(int id){
-        return manager.find(Cliente.class, id);
-    }   
+    public Venda buscarPorId(int id){
+        return manager.find(Venda.class, id);
+    }
 }

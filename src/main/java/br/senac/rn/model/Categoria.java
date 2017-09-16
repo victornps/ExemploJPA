@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "tb_categoria")
+@Entity(name = "tb_categorias")
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
