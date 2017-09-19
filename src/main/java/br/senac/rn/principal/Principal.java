@@ -19,66 +19,14 @@ import java.util.List;
 public class Principal {
     
     public static void main(String[] args) {
-        /*
+        
         Sexo s1 = new Sexo();
-        
-        s1.setNome("Feminino");
-        s1.setSigla('F');
-        
+        s1.setNome("Indefinido");
+        s1.setSigla('I');
+        s1.setId(3);
         SexoDAO dao = new SexoDAO();
-        
-        dao.inserir(s1);*/
-        //dao.excluir(dao.buscarPorId());
-        //System.out.println(dao.buscarTodos().toString());
-        //Sexo s2 = new Sexo();
-        //s2.setId(1);
-        //s2.setNome("Feminino");
-        //s2.setSigla('F');
-        //dao.atualizar(s2);
-        
-        /*
-        Categoria c1 = new Categoria();
-        
-        c1.setNome("Panificadora");
-        c1.setDescricao("Aquela lá");
-        CategoriaDAO dao = new CategoriaDAO();
-        dao.inserir(c1);*/
-        
-        /*
-        Produto p1 = new Produto();
-        p1.setNome("Pastel");
-        p1.setDescricao("Recheio de vento");
-        p1.setPreco(10);
-        p1.setCategoria(new CategoriaDAO().buscarPorId(1));
-        
-        ProdutoDAO dao = new ProdutoDAO();
-        dao.inserir(p1);
-        */
-        
-        /*
-        Cliente c1 = new Cliente();
-        c1.setNome("Parvolino Vieira Soares");
-        c1.setCpf("44455566677");
-        c1.setSexo(new SexoDAO().buscarPorId(1));
-        ClienteDAO dao = new ClienteDAO();
-        dao.inserir(c1);*/
-        
-        Venda v1 = new Venda();
-        v1.setCliente(new ClienteDAO().buscarPorId(2));
-        List<Produto> l1 = new ArrayList();
-        l1.add(new ProdutoDAO().buscarPorId(2));
-        v1.setData(Calendar.getInstance());
-        v1.setProdutos(l1);
-        
-        float valor = 0;
-        for (Produto p : l1){
-            valor += p.getPreco();
-        }
-        v1.setValor(valor);
-        
-        VendaDAO dao = new VendaDAO();
-        dao.inserir(v1);
-        
+        //dao.delete(dao.selectById(3));
+        System.out.println(dao.selectAll().toString());
         
     }
 }

@@ -1,15 +1,19 @@
 package br.senac.rn.dao;
 
 import br.senac.rn.model.Categoria;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import br.senac.rn.util.GenericDAO;
 
 
-public class CategoriaDAO {
+
+public class CategoriaDAO extends GenericDAO<Categoria>{
     
+    @Override
+    public Class<Categoria> getClassType(){
+        return Categoria.class;
+    }
+    
+    
+    /*
     private EntityManager manager;
     private EntityManagerFactory factory;
 
@@ -43,7 +47,7 @@ public class CategoriaDAO {
     
     public Categoria buscarPorId(int id){
         return manager.find(Categoria.class, id);
-    }
+    }*/
     
     
 }

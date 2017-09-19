@@ -2,15 +2,19 @@ package br.senac.rn.dao;
 
 
 import br.senac.rn.model.Venda;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import br.senac.rn.util.GenericDAO;
 
 
-public class VendaDAO {
-       
+
+public class VendaDAO extends GenericDAO<Venda>{
+    
+    @Override
+    public Class<Venda> getClassType(){
+        return Venda.class;
+    }
+    
+    
+    /*   
     private EntityManager manager;
        private EntityManagerFactory factory;
        
@@ -46,5 +50,5 @@ public class VendaDAO {
     
     public Venda buscarPorId(int id){
         return manager.find(Venda.class, id);
-    }
+    }*/
 }
