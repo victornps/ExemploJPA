@@ -24,6 +24,7 @@ public class VendaDAO {
         manager.persist(venda);
         manager.getTransaction().commit();
         System.out.println("Venda Inserida: "+venda);
+        manager.close();
     }
     
     public void excluir(Venda venda){

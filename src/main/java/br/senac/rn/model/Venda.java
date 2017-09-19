@@ -1,5 +1,6 @@
 package br.senac.rn.model;
 
+import java.util.Calendar;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity(name = "tb_vendas")
 public class Venda {
@@ -18,15 +21,18 @@ public class Venda {
     private Cliente cliente;
     @ManyToMany
     private List<Produto> produtos;
+    @Temporal(TemporalType.DATE)
+    private Calendar data;
     private float valor;
 
     public Venda() {
     }
 
-    public Venda(int id, Cliente cliente, List<Produto> produtos, float valor) {
+    public Venda(int id, Cliente cliente, List<Produto> produtos, Calendar data, float valor) {
         this.id = id;
         this.cliente = cliente;
         this.produtos = produtos;
+        this.data = data;
         this.valor = valor;
     }
 
@@ -62,6 +68,14 @@ public class Venda {
         this.produtos = produtos;
     }
 
+    public Calendar getData() {
+        return data;
+    }
+
+    public void setData(Calendar data) {
+        this.data = data;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -88,10 +102,7 @@ public class Venda {
 
     @Override
     public String toString() {
-        return "Venda{" + "id=" + id + ", cliente=" + cliente + ", produtos=" + produtos + ", valor=" + valor + '}';
+        return "Venda{" + "id=" + id + ", cliente=" + cliente + ", produtos=" + produtos + ", data=" + data + ", valor=" + valor + '}';
     }
-    
-    
-    
-    
+
 }

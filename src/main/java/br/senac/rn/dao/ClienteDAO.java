@@ -9,14 +9,16 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 
+
 public class ClienteDAO {
     
     private EntityManager manager;
-       private EntityManagerFactory factory;
+    private EntityManagerFactory factory;
        
        public ClienteDAO(){
         factory = Persistence.createEntityManagerFactory("ConexaoDB");
          manager = factory.createEntityManager();
+         
        }
        
     public void inserir(Cliente cliente){
@@ -46,4 +48,11 @@ public class ClienteDAO {
     public Cliente buscarPorId(int id){
         return manager.find(Cliente.class, id);
     }   
+    
+    public List<Cliente> buscarPorCpf(String cpf){
+        String jpql = "SELECT c FROM Cliente c WHERE c.cpf like :cpfCliente";
+        TypedQuery<Cliente> consulta = manager.createQuery(jpql, Cliente.class);
+        consulta.setParameter("cpfCliente","%" + cpf + "%");
+        return consulta.getResultList();
+    }
 }

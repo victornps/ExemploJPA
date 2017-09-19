@@ -12,6 +12,7 @@ import br.senac.rn.model.Produto;
 import br.senac.rn.model.Sexo;
 import br.senac.rn.model.Venda;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -63,15 +64,21 @@ public class Principal {
         dao.inserir(c1);*/
         
         Venda v1 = new Venda();
-        v1.setCliente(new ClienteDAO().buscarPorId(1));
-        Produto p = new ProdutoDAO().buscarPorId(1);
+        v1.setCliente(new ClienteDAO().buscarPorId(2));
         List<Produto> l1 = new ArrayList();
-        l1.add(p);
-        
+        l1.add(new ProdutoDAO().buscarPorId(2));
+        v1.setData(Calendar.getInstance());
         v1.setProdutos(l1);
-        v1.setValor(150);
+        
+        float valor = 0;
+        for (Produto p : l1){
+            valor += p.getPreco();
+        }
+        v1.setValor(valor);
         
         VendaDAO dao = new VendaDAO();
         dao.inserir(v1);
+        
+        
     }
 }

@@ -1,17 +1,16 @@
 package br.senac.rn.dao;
 
 import br.senac.rn.model.Sexo;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import br.senac.rn.util.GenericDAO;
 
-public class SexoDAO {
+
+public class SexoDAO extends GenericDAO<Sexo>{
    
-    private EntityManager manager;
-    private EntityManagerFactory factory;
-
+    @Override
+    public Class<Sexo> getClassType(){
+        return Sexo.class;
+    }
+/*
     public SexoDAO() {
         factory = Persistence.createEntityManagerFactory("ConexaoDB");
         manager = factory.createEntityManager();
@@ -42,5 +41,5 @@ public class SexoDAO {
     
     public Sexo buscarPorId(int id){
         return manager.find(Sexo.class, id);
-    }
+    }*/
 }
